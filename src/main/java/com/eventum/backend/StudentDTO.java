@@ -1,15 +1,25 @@
 package com.eventum.backend;
 
-public class StudentDTO {
+public class StudentDTO{
 
-    private long id;
+  private long id;
 
-    public void setId(long id) {
-        this.id = id;
-    }
+  private String name;
 
-    public long getId() {
-        return this.id;
-    }
+  public void setId(long id) {
+    this.id = id;
+  }
+
+  public long getId() {
+    return this.id;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public String getName() {
+    return this.name;
+  }
 
 }

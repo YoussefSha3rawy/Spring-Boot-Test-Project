@@ -1,5 +1,6 @@
 package com.eventum.backend;
 
+import org.hibernate.annotations.Type;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,21 +11,24 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Student")
-public class Student {
+public class Student{
 
-  @Column(name = "id", columnDefinition = "INT")
+  @Column(name = "id")
+  @Type(type = "org.hibernate.type.LongType")
   @Id
-  private int id;
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private long id;
 
-  @Column(name = "name", columnDefinition = "VARCHAR")
+  @Column(name = "name")
+  @Type(type = "org.hibernate.type.StringType")
   private String name;
 
-  public void setId(int id) {
+  public void setId(long id) {
     this.id = id;
   }
 
-  public int getId() {
-    return  this.id;
+  public long getId() {
+    return this.id;
   }
 
   public void setName(String name) {
@@ -32,7 +36,7 @@ public class Student {
   }
 
   public String getName() {
-    return  this.name;
+    return this.name;
   }
 
 }
