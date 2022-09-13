@@ -10,33 +10,29 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "Student")
-public class Student{
+@Table(name="Student")
+public class Student {
 
-  @Column(name = "id")
-  @Type(type = "org.hibernate.type.LongType")
+  @Column(name="id")
+  @Type(type="org.hibernate.type.LongType")
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   private long id;
 
-  @Column(name = "name")
-  @Type(type = "org.hibernate.type.StringType")
+  @Column(name="name")
+  @Type(type="org.hibernate.type.StringType")
   private String name;
 
   public void setId(long id) {
     this.id = id;
   }
-
   public long getId() {
     return this.id;
   }
-
   public void setName(String name) {
     this.name = name;
   }
-
   public String getName() {
     return this.name;
   }
-
 }

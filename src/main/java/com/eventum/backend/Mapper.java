@@ -1,18 +1,26 @@
 package com.eventum.backend;
 
-public class Mapper{
-  public static StudentDTO mapToDTO(Student entity) {
-    StudentDTO dto = new StudentDTO();
-    dto.setId( entity.getId());
-    dto.setName( entity.getName());
-    return dto;
-  }
+import com.eventum.backend.dependencies.MapperUtils;
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
+import org.dozer.DozerBeanMapper;
 
-  public static Student mapFromDTO(StudentDTO dto) {
-    Student entity = new Student();
-    entity.setId( dto.getId());
-    entity.setName( dto.getName());
-    return entity;
-  }
+@Service
+public class Mapper {
+  @Autowired
+  private DozerBeanMapper dozerBeanMapper;
 
+  @Autowired
+  private MapperUtils mapper;
+
+  public  Student mapStudentDto(StudentDTO dto) {
+    return dozerBeanMapper.map(dto, Student.class);
+  }
+  public  StudentDTO mapStudent(Student entity) {
+    return dozerBeanMapper.map(entity, StudentDTO.class);
+  }
+  public List<StudentDTO> mapStudents(List<Student> entities) {
+    return mapper.mapList(entities, StudentDTO.class);
+  }
 }
